@@ -1,4 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" isELIgnored="false" %>
+<%@ taglib uri="jakarta.tags.core" prefix="c" %>
 
 <!-- Navbar -->
 <nav class="navbar fixed-top navbar-expand-lg navbar-light bg-white">
@@ -33,9 +34,13 @@
           <li class="nav-item active">
             <a class="nav-link " href="home">Trang chủ</a>
           </li>
-          <li class="nav-item">
-            <a class="nav-link" href="https://mdbootstrap.com/education/bootstrap/">Dash board</a>
-          </li>
+
+          <c:set var="role" value="${param.role}" />
+          <c:if test="${role eq true}">
+            <li class="nav-item">
+              <a class="nav-link" href="managerProduct">Dash board</a>
+            </li>
+          </c:if>        
         </ul>
         <!-- Left links -->      
       </div>
@@ -52,9 +57,19 @@
         <a class="nav-link me-3" href="https://www.facebook.com/profile.php?id=100007709749110">
           <i class="fab fa-facebook-f"></i>
         </a>
-        <a href="login" class="border rounded px-2 nav-link"
-                target="_blank">Đăng nhập
-        </a>
+
+        <c:set var="username" value="${param.username}" />
+        <c:choose>
+          <c:when test="${not empty username}">
+              <a href="logout" class="border rounded px-2 nav-link" target="_blank">Đăng xuất</a>
+          </c:when>
+          <c:otherwise>
+              <a href="login" class="border rounded px-2 nav-link" target="_blank">Đăng nhập</a>
+              <span>
+              <a href="register" class="border rounded px-2 nav-link" target="_blank">Đăng ký</a>
+              </span>
+          </c:otherwise>
+        </c:choose>
       </div>
       <!-- Right elements -->
       
@@ -92,7 +107,7 @@
     </div>
     <div class="carousel-inner">
       <div class="carousel-item active">
-        <img src="img/phonebanner.png" class="d-block w-100" alt="Wild Landscape"/>
+        <img src="img/space.gif" class="d-block w-100" alt="Wild Landscape"/>
         <div class="mask" style="background-color: rgba(0, 0, 0, 0.4)"></div>
         
       </div>

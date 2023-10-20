@@ -7,7 +7,7 @@
     <div class="container-fluid">
   
       <!-- Navbar brand -->
-      <a class="navbar-brand" href="#">Hãng:</a>
+      <a class="navbar-brand" href="#"><b>HÃNG:</b></a>
   
       <!-- Toggle button -->
       <button 
@@ -27,25 +27,25 @@
   
           <!-- Link -->
           <li class="nav-item acitve">
-            <a class="nav-link text-white" href="all">Tất cả</a>
+            <a class="nav-link text-white" href="home">Tất cả</a>
           </li>
           <li class="nav-item">
-                <a class="nav-link text-white" href="#">Iphone</a>
+                <a class="nav-link text-white" href="home?search=Iphone">Iphone</a>
               </li>
               <li class="nav-item">
-                <a class="nav-link text-white" href="#">Samsung</a>
+                <a class="nav-link text-white" href="home?search=Samsung">Samsung</a>
               </li>
               <li class="nav-item">
-                <a class="nav-link text-white" href="#">Xiaomi</a>
+                <a class="nav-link text-white" href="home?search=Xiaomi">Xiaomi</a>
               </li>
               <li class="nav-item">
-                <a class="nav-link text-white" href="#">OPPO</a>
+                <a class="nav-link text-white" href="home?search=OPPO">OPPO</a>
               </li>
               <li class="nav-item">
-                <a class="nav-link text-white" href="#">realme</a>
+                <a class="nav-link text-white" href="home?search=realme">realme</a>
               </li>
               <li class="nav-item">
-                <a class="nav-link text-white" href="#">vivo</a>
+                <a class="nav-link text-white" href="home?search=vivo">vivo</a>
               </li>
         </ul>
   

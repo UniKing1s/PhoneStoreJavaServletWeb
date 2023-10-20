@@ -19,7 +19,10 @@
 </head>
 <body>
     <!--header-->
-    <jsp:include page = "header.jsp"></jsp:include>
+    <jsp:include page = "header.jsp">
+      <jsp:param name="username" value="${sessionScope.username}" />
+      <jsp:param name="role" value="${sessionScope.role}" />
+    </jsp:include>
 
 
 
@@ -36,13 +39,43 @@
         <div class="row">
             <!--Grid column-->
                 <!--Card-->
+            
                 <div class="card p-4">
+                    <div>
+                        <c:if test="${not empty tb}">
+                                <font style="color: rgb(4, 111, 13);"><b>
+                                    <%
+                                        String thongbao = (String) request.getAttribute("tb");
+                                        Object successAttribute = request.getAttribute("success");
+                                        if (successAttribute != null && successAttribute instanceof Boolean) {
+                                            boolean check = (Boolean) successAttribute;
+                                            if (check) {
+                                                out.println(thongbao);
+                                            }
+                                        }
+                                    %>  
+                                    </b></font>
+                                <font style="color: red;"><b>
+                                    <%
+                                    if (successAttribute != null && successAttribute instanceof Boolean) {
+                                        boolean check = (Boolean) successAttribute;
+                                        if (!check) {
+                                            out.println(thongbao);
+                                        }
+                                    }
+                                    %>
+                                    </b></font>
+                        </c:if>
+                        <br>
+                        <br>
+                    </div>
                     <!--Grid row-->
+                    <form action="" method="post">
                     <div class="input-group mb-4">
                         <!--Grid column-->
                             <!--firstName-->
                             <div class="form-outline">
-                                <input type="text" id="typeText" class="form-control" />
+                                <input type="text" name="name" id="typeText" class="form-control" required/>
                                 <label class="form-label" for="typeText">Tên người dùng</label>
                             </div>
                     
@@ -54,7 +87,7 @@
                     <!--Username-->
                     <div class="input-group mb-4">
                         <div class="form-outline">
-                            <input type="text" id="typeText" class="form-control" />
+                            <input type="text" name="username" id="typeText" class="form-control" required/>
                             <label class="form-label" for="typeText">Tên đăng nhập</label>
                         </div>                    
                     </div>
@@ -63,7 +96,7 @@
                    
                     <div class="input-group mb-4">
                         <div class="form-outline">
-                            <input type="email" id="typeText" class="form-control" required/>
+                            <input type="email" name="email" id="typeText" class="form-control" required/>
                             <label class="form-label" for="typeText">Email</label>
                         </div>                    
                     </div>
@@ -71,19 +104,20 @@
                     <!--password-->
                     <div class="input-group mb-4">
                         <div class="form-outline">
-                            <input type="password" id="typeText" class="form-control" required/>
+                            <input type="password" name="password" id="typeText" class="form-control" required/>
                             <label class="form-label" for="typeText">Mật khẩu</label>
                         </div>                    
                     </div>
                     <!--Repassword-->
                     <div class="input-group mb-4">
                         <div class="form-outline">
-                            <input type="password" id="typeText" class="form-control" required/>
+                            <input type="password" name="repassword" id="typeText" class="form-control" required/>
                             <label class="form-label" for="typeText">Nhập lại mật khẩu</label>
                         </div>                    
                     </div>
                     <hr class="mb-4" />                    
-                  <button class="btn btn-primary" type="button">Đăng Nhập</button>
+                  <button class="btn btn-primary" style="width: 100%; max-width: 672 px; text-align: center;" type="submit">Đăng ký</button>
+                </form>
                   <br>
                     <div class="row mb-3">
                         <!--Grid column-->

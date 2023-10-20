@@ -1,24 +1,17 @@
 CREATE DATABASE phonestore;
 USE phonestore;
-create table roles
-(
-ROLE int not null,
-NAMEROLE VARCHAR(20) not null,
-primary key (ROLE)
-) ;
-create table accounts
+
+create table account
 (
 ID INT auto_increment unique,
 USERNAME  VARCHAR(20) not null ,
 PASSWORD  VARCHAR(20) not null,
 EMAIL VARCHAR(50) not null,
-SDT VARCHAR(20) not null,
 TIMESIGNIN timestamp not null,
 NAME VARCHAR(20) not null,
-ROLE int not null,
-primary key (USERNAME),
-FOREIGN KEY (ROLE) REFERENCES roles(ROLE)
-) ;
+ISADMIN int not null,
+primary key (USERNAME)
+);
 
 create table loai
 (
@@ -35,20 +28,70 @@ primary key (MAHANG)
 ) ;
 create table sanpham
 (
-MASP  int not null,
-TENSP  VARCHAR(20) not null,
+MASP INT auto_increment unique,
+TENSP VARCHAR(20) not null,
 SL int not null,
+DONGIA DOUBLE not null,
+GIAMGIA DOUBLE,
+TAG VARCHAR(20),
 MOTA VARCHAR(200),
 MAHANG int not null,
 MALOAI  int not null,
+IMGURL VARCHAR(50) not null,
+IDPAP int not null,
 primary key (MASP),
 FOREIGN KEY (MAHANG) REFERENCES hang(MAHANG),
-FOREIGN KEY (MALOAI) REFERENCES loai(MALOAI)
-) ;
+FOREIGN KEY (MALOAI) REFERENCES loai(MALOAI),
+FOREIGN KEY (IDPAP) REFERENCES account(ID)
+);
+create table hoaDon
+(
+MAHD INT auto_increment unique,
+IDACC int,
+DIACHIKH VARCHAR(200),
+SDT VARCHAR(15),
+TONGTIEN DOUBLE,
+primary key (MAHD),
+FOREIGN KEY (IDACC) REFERENCES account(ID)
+);
+
+create table cthoadon
+(
+MAHD INT not null,
+MASP int not null,
+SL int not null,
+DONGIA DOUBLE not null ,
+TONGTIEN DOUBLE not null,
+
+primary key (MAHD,MASP),
+FOREIGN KEY (MAHD) REFERENCES hoadon(MAHD),
+FOREIGN KEY (MASP) REFERENCES sanpham(MASP)
+);
 
 select * from product;
-insert into roles values(1,'admin');
-insert into roles values(2,'customer');
 
-insert into accounts values(null,'king','khoivo',"2017-06-15 09:34:21",'khoi',2);
-insert into accounts values(null,'khoivo','admin',"2017-06-15 09:34:21",'Võ Anh Khôi',1);
+-- giá trị account
+-- admins
+insert into account values(null,'king','khoivo','khoivo050603it@gmail.com',"2017-06-15 09:34:21",'khoi',1);
+-- customers
+insert into account values(null,'kuro','khoivo','khoivo050603it@gmail.com',"2017-06-15 09:34:21",'khoi',2);
+
+
+-- giá trị hãng
+insert into hang values(1,'IPhone');
+insert into hang values(2,'SAMSUNG');
+
+-- giá trị loại
+insert into loai values(1,'Điện Thoại Cảm Ứng');
+insert into loai values(2,'Điện Thoại Phím Bấm');
+
+-- giá trị sản phẩm
+insert into sanpham values(null,'Iphone 15',100,30000000,15,'Best seller','Iphone 15 vừa mới được ra mắt',1,1,'i15.jpg',1);
+insert into sanpham values(null,'Iphone 12',100,25000000,null,null,'Iphone 12 hàng vừa về',1,1,'i12.jpg',1);
+-- tạo giá trị hóa đơn
+insert into hoadon values(null,2,'32/6/13','0901672781',null);
+
+-- giá trị chi tiết cho hóa đơn
+insert into cthoadon values(1,1,1,330000000,330000000);
+
+
