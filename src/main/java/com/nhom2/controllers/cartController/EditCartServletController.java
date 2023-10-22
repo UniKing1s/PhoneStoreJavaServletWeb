@@ -24,6 +24,14 @@ public class EditCartServletController extends HttpServlet{
     }
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+        editCartQuantity(req, resp);
+    }
+
+
+
+
+    
+    private void editCartQuantity(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         HttpSession session = req.getSession();
         int masp = Integer.parseInt(req.getParameter("masp"));
         int sl = Integer.parseInt(req.getParameter("sl"));

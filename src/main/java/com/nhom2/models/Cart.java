@@ -54,6 +54,7 @@ public class Cart {
                 if(x.getProduct().getMasp() == card.getProduct().getMasp()){
                     int soluong = x.getSl() + card.getSl();
                     x.setSl(soluong);
+                    x.setTongTien();
                     System.out.println("Số lượng mới của carItem này là:" + x.getSl());
                     return;
                 } 

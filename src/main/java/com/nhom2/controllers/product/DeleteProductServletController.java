@@ -15,6 +15,24 @@ import jakarta.servlet.http.HttpSession;
 public class DeleteProductServletController extends HttpServlet{
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+        deleteProduct(req, resp);
+    }
+    @Override
+    protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+        // TODO Auto-generated method stub
+        super.doPost(req, resp);
+    }
+
+
+
+
+
+
+
+
+
+    
+    private void deleteProduct(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         HttpSession session = req.getSession();
         if (session.getAttribute("role") != null && session.getAttribute("role").toString().equals("true") ) {
             int id = Integer.parseInt(req.getParameter("id"));
@@ -24,9 +42,5 @@ public class DeleteProductServletController extends HttpServlet{
         }
         resp.sendRedirect("managerProduct");
     }
-    @Override
-    protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        // TODO Auto-generated method stub
-        super.doPost(req, resp);
-    }
+    
 }

@@ -19,6 +19,13 @@ import jakarta.servlet.http.HttpSession;
 public class LoginServletController extends HttpServlet{
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+        showLoginPage(req, resp);
+    }
+    @Override
+    protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+        checkAnhLogin(req, resp);
+    }
+    private void showLoginPage(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         HttpSession session = req.getSession();
         if(session.getAttribute("cart") == null){
             Cart giohang = new Cart();
@@ -32,8 +39,7 @@ public class LoginServletController extends HttpServlet{
         }    
         resp.sendRedirect("/home");  
     }
-    @Override
-    protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+    private void checkAnhLogin(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         String tk = req.getParameter("username");
         String mk = req.getParameter("password");
         //lay connection

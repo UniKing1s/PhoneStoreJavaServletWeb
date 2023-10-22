@@ -24,10 +24,6 @@ modelsCRUD
     nếu sản phẩm chưa có thì thêm vào có rồi thì tăng số lượng
     - Crud Cart
     22/10/2023
+    - js thanh tiềm kiếm kết hợp servlet
 </Khoi>
 
-
-HttpSession session = req.getSession();
-session.setAttribute("ID",account.id);
-
-session.setAttribute("ID");

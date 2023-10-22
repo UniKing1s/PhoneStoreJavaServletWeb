@@ -461,3 +461,14 @@ target/phonestore/WEB-INF/views/dashBoard.jsp
 target/phonestore/WEB-INF/views/editProduct.jsp
 target/phonestore/WEB-INF/views/managerproduct.jsp
 target/phonestore/img/background.gif
+/target/
+target/classes/com/nhom2/controllers/LogoutServletController.class
+target/classes/com/nhom2/models/modelsCURD/DBCrudProduct.class
+target/classes/com/nhom2/models/modelsCart/CartBean.class
+target/classes/com/nhom2/models/modelsCart/CartItemBean.class
+target/phonestore/WEB-INF/classes/com/nhom2/controllers/LogoutServletController.class
+target/phonestore/WEB-INF/classes/com/nhom2/models/modelsCURD/DBCrudProduct.class
+target/phonestore/WEB-INF/classes/com/nhom2/models/modelsCart/CartBean.class
+target/phonestore/WEB-INF/classes/com/nhom2/models/modelsCart/CartItemBean.class
+target/phonestore/WEB-INF/views/addproduct.jsp
+target/classes/com/nhom2/controllers/LogoutServletController.class

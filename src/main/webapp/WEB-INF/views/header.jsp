@@ -63,19 +63,21 @@
         <c:set var="username" value="${param.username}" />
         <c:choose>
           <c:when test="${not empty username}">
-
               <c:set var="user" value="${param.user}" />
-              <a class="border rounded px-2 nav-link" href="">${user}</a>
-              <a href="logout" class="border rounded px-2 nav-link" target="_blank">Đăng xuất</a>
+              <a class="border rounded px-2 nav-link" href="">Wellcome: <strong>${user}</strong></a>
+              <span style="opacity: 0%;">--</span>
+              <a href="logout" class="btn btn-primary" target="_blank" style="font-weight: bold;">Đăng xuất</a>
           </c:when>
           <c:otherwise>
-              <a href="login" class="border rounded px-2 nav-link" target="_blank">Đăng nhập</a>
+              <a href="login" class="btn btn-primary" target="_blank" style="font-weight: bold;">Đăng nhập</a>
+              <span style="opacity: 0%;">--</span>
               <span>
-              <a href="register" class="border rounded px-2 nav-link" target="_blank">Đăng ký</a>
+              <a href="register" class="btn btn-primary" target="_blank"style="font-weight: bold;">Đăng ký</a>
               </span>
           </c:otherwise>
         </c:choose>
       </div>
+      
       <!-- Right elements -->
       
     </div>

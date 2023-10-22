@@ -21,6 +21,8 @@
     <link rel="stylesheet" href="css/mdb.min.css" />
     <!-- Custom styles -->
     <link rel="stylesheet" href="css/style.css" />
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+    
 
   </head>
   <body>
@@ -31,15 +33,28 @@
       <jsp:param name="cartCount" value="${sessionScope.cartCount}" />
       <jsp:param name="user" value="${sessionScope.user}" />
     </jsp:include>
+
+    <!--header-->
+    
+
+
+
+
+
    <!--Main layout-->
   <main>
-  <jsp:include page = "menu.jsp"></jsp:include>
   <!-- Navbar -->
+  <div class="container">
+    <!-- Navbar have js load data from search -->
+    
+    <jsp:include page = "navbar.jsp">
+      <jsp:param name="navItem" value="${listhang}" />
+    </jsp:include>
     
   <!-- Products -->
     <section>
     <div class="text-center">
-      <div class="row">
+      <div class="row" id="itemContent">
 
 
 

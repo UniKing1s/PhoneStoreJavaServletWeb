@@ -77,21 +77,21 @@
                         <!--Giảm Giá-->
                         <div class="input-group mb-4">
                             <div class="form-outline">
-                                <input type="number" id="typeText" name="giamgia" class="form-control" required/>
+                                <input type="number" id="typeText" name="giamgia" class="form-control"/>
                                 <label class="form-label" for="typeText">Giảm giá (%)</label>
                             </div>
                         </div>
                         <!--Tag-->
                         <div class="input-group mb-4">
                             <div class="form-outline">
-                                <input type="text" id="typeText" name="tag" class="form-control" required/>
+                                <input type="text" id="typeText" name="tag" class="form-control"/>
                                 <label class="form-label" for="typeText">Tag (Best Seller)</label>
                             </div>
                         </div>
                         <!--Mô tả-->
                         <div class="input-group mb-4">
                             <div class="form-outline">
-                                <input type="text" id="typeText" name="mota" class="form-control" required/>
+                                <input type="text" id="typeText" name="mota" class="form-control"/>
                                 <label class="form-label" for="typeText">Mô tả</label>
                             </div>
                         </div>
@@ -120,7 +120,7 @@
                         <!--Img text-->
                         <div class="input-group mb-4">
                             <div class="form-outline">
-                                <input type="text" id="typeText" name="imgUrl" class="form-control" required />
+                                <input type="text" id="typeText" name="imgUrl" placeholder="vd: https://i.imgur.com/Ogw0z8Z.png" class="form-control" required />
                                 <label class="form-label" for="typeText">Image URL (372 x 461)</label>
                             </div>
                         </div>

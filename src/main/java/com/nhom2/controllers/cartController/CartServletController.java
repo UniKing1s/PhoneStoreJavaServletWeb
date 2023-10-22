@@ -15,6 +15,17 @@ import jakarta.servlet.http.HttpSession;
 public class CartServletController extends HttpServlet{
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+        showCart(req, resp);
+    }
+    @Override
+    protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+        // TODO Auto-generated method stub
+        super.doPost(req, resp);
+    }
+
+
+    
+    private void showCart(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         HttpSession session = req.getSession();
         if(session.getAttribute("cart") == null){
             Cart giohang = new Cart();
@@ -29,10 +40,5 @@ public class CartServletController extends HttpServlet{
         
         RequestDispatcher requestDispatcher = req.getRequestDispatcher("/WEB-INF/views/cartView.jsp");
         requestDispatcher.forward(req, resp);
-    }
-    @Override
-    protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        // TODO Auto-generated method stub
-        super.doPost(req, resp);
     }
 }

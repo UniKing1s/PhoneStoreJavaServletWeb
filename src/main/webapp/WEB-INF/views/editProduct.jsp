@@ -106,21 +106,21 @@
                                       }
                                     formattedNumber = decimalFormat.format(giamgia);
                                 %>
-                                <input type="number" id="typeText" name="giamgia" class="form-control" value="<%=formattedNumber%>" required/>
+                                <input type="number" id="typeText" name="giamgia" class="form-control" value="<%=formattedNumber%>"/>
                                 <label class="form-label" for="typeText">Giảm giá (%)</label>
                             </div>
                         </div>
                         <!--Tag-->
                         <div class="input-group mb-4">
                             <div class="form-outline">
-                                <input type="text" id="typeText" name="tag" class="form-control" value="${p.tag}" required/>
+                                <input type="text" id="typeText" name="tag" class="form-control" value="${p.tag}"/>
                                 <label class="form-label" for="typeText">Tag (Best Seller)</label>
                             </div>
                         </div>
                         <!--Mô tả-->
                         <div class="input-group mb-4">
                             <div class="form-outline">
-                                <input type="text" id="typeText" name="mota" class="form-control" value="${p.mota}" required/>
+                                <input type="text" id="typeText" name="mota" class="form-control" value="${p.mota}"/>
                                 <label class="form-label" for="typeText">Mô tả</label>
                             </div>
                         </div>

@@ -18,6 +18,24 @@ import jakarta.servlet.http.HttpSession;
 public class ListProductServletController extends HttpServlet{
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+        showPageListOfProduct(req, resp); 
+    }
+    @Override
+    protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+        // TODO Auto-generated method stub
+        super.doPost(req, resp);
+    }
+
+
+
+
+
+
+
+
+
+    
+    private void showPageListOfProduct(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         HttpSession session = req.getSession();
         System.out.println("role = " + session.getAttribute("role"));
         if (session.getAttribute("role") != null && session.getAttribute("role").toString().equals("true") ) {
@@ -33,10 +51,5 @@ public class ListProductServletController extends HttpServlet{
             return;
         }    
         resp.sendRedirect("home");  
-    }
-    @Override
-    protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        // TODO Auto-generated method stub
-        super.doPost(req, resp);
     }
 }

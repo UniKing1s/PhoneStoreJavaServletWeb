@@ -17,6 +17,18 @@ import jakarta.servlet.http.HttpSession;
 public class DeleteCartItemServletController extends HttpServlet{
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+        deleteItemCart(req, resp);
+    }
+    @Override
+    protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+        // TODO Auto-generated method stub
+        super.doPost(req, resp);
+    }
+
+
+
+    
+    private void deleteItemCart(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         HttpSession session = req.getSession();
         int masp = Integer.parseInt(req.getParameter("masp").toString());
         if(session.getAttribute("ID") != null){
@@ -37,10 +49,5 @@ public class DeleteCartItemServletController extends HttpServlet{
             session.setAttribute("cartCount", card.getCountItem());
         }
         resp.sendRedirect("cart");
-    }
-    @Override
-    protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        // TODO Auto-generated method stub
-        super.doPost(req, resp);
     }
 }

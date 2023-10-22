@@ -118,5 +118,35 @@ public class DBCrudProduct {
             e.printStackTrace();
         }
     }
+    public static List<Product> getListOfProductByName(Connection conn, String tensp){
+        List<Product> listProd = new ArrayList<>();
+        String query = "SELECT * FROM sanpham where TENSP LIKE ?";
+        ResultSet rs = null;
+        try {
+            System.out.println("do get list");
+            PreparedStatement ps = conn.prepareStatement(query);
+            ps.setString(1, "%"+tensp+"%");
+            rs = ps.executeQuery();
+            while (rs.next()) {
+                int id = rs.getInt("MASP");
+                String nameProduct = rs.getString("TENSP");
+                int sl = rs.getInt("SL");
+                double dongia = rs.getDouble("DONGIA");
+                double giamgia = rs.getDouble("GIAMGIA");
+                String tag = rs.getString("TAG");
+                String mota = rs.getString("MOTA");
+                int mahang = rs.getInt("MAHANG");
+                int maloai = rs.getInt("MALOAI");
+                String imgUrl = rs.getString("IMGURL");
+                int idpap = rs.getInt("IDPAP");//id người thêm
+                Product pro = new Product(id, nameProduct, sl, dongia, giamgia, tag, mota, mahang, maloai, imgUrl, idpap);
+                listProd.add(pro);
+            }
+        } catch (SQLException e) {
+            System.out.println("Lỗi ở đây");
+            e.printStackTrace();
+        }
+        return listProd;
+    }
 }
 

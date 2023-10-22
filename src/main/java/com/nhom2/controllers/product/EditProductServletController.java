@@ -22,6 +22,47 @@ import jakarta.servlet.http.HttpSession;
 public class EditProductServletController extends HttpServlet{
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+        showEditProductPage(req, resp);
+    }
+    @Override
+    protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+        doEitProduct(req, resp);
+    }
+
+
+
+
+    
+
+
+
+
+
+    private void doEitProduct(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+        Connection conn = MySQLConnection.getMySQLConnection();
+        //Lấy giá trị từ trang sửa
+        int masp = Integer.parseInt(req.getParameter("id"));
+        String tensp = req.getParameter("tensp");
+        int sl = Integer.parseInt(req.getParameter("sl"));
+        double giasp = Double.parseDouble(req.getParameter("giasp"));
+        double giamgia = 0;
+        try {
+            giamgia = Double.parseDouble(req.getParameter("giamgia"));
+        } catch (Exception e) {
+            // TODO: handle exception
+        }
+        String tag = req.getParameter("tag");
+        String mota = req.getParameter("mota");
+        int mahang = Integer.parseInt(req.getParameter("mahang"));
+        int maloai = Integer.parseInt(req.getParameter("maloai"));
+        String imgURL = req.getParameter("imgUrl");
+        int idNguoiThem = 1;
+        Product product = new Product(masp, tensp, sl, giasp, giamgia, tag, mota, mahang, maloai, imgURL, idNguoiThem);
+        DBCrudProduct.updateProduct(conn, product);
+        MySQLConnection.closeConnection(conn);
+        resp.sendRedirect("managerProduct");
+    }
+    private void showEditProductPage(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         HttpSession session = req.getSession();
         if (session.getAttribute("role") != null && session.getAttribute("role").toString().equals("true") ) {
             int id = Integer.parseInt(req.getParameter("id"));
@@ -44,25 +85,5 @@ public class EditProductServletController extends HttpServlet{
             resp.sendRedirect("home");
         }
 
-    }
-    @Override
-    protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        Connection conn = MySQLConnection.getMySQLConnection();
-        //Lấy giá trị từ trang sửa
-        int masp = Integer.parseInt(req.getParameter("id"));
-        String tensp = req.getParameter("tensp");
-        int sl = Integer.parseInt(req.getParameter("sl"));
-        double giasp = Double.parseDouble(req.getParameter("giasp"));
-        double giamgia = Double.parseDouble(req.getParameter("giamgia"));
-        String tag = req.getParameter("tag");
-        String mota = req.getParameter("mota");
-        int mahang = Integer.parseInt(req.getParameter("mahang"));
-        int maloai = Integer.parseInt(req.getParameter("maloai"));
-        String imgURL = req.getParameter("imgUrl");
-        int idNguoiThem = 1;
-        Product product = new Product(masp, tensp, sl, giasp, giamgia, tag, mota, mahang, maloai, imgURL, idNguoiThem);
-        DBCrudProduct.updateProduct(conn, product);
-        MySQLConnection.closeConnection(conn);
-        resp.sendRedirect("home");
     }
 }

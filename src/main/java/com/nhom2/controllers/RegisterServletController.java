@@ -19,21 +19,13 @@ import jakarta.servlet.http.HttpSession;
 public class RegisterServletController extends HttpServlet{
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        HttpSession session = req.getSession();
-        if(session.getAttribute("cart") == null){
-            Cart giohang = new Cart();
-            session.setAttribute("cartCount", giohang.getCountItem());
-            session.setAttribute("cart", giohang);
-        }
-        if (session.getAttribute("username") == null || session.getAttribute("username").toString().equals("") ) {
-            RequestDispatcher requestDispatcher = req.getRequestDispatcher("/WEB-INF/views/registerView.jsp");
-            requestDispatcher.forward(req, resp);
-            return;
-        } 
-        resp.sendRedirect("home");
+        showRegisterDisplay(req, resp);
     }
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+        registerAccont(req, resp);
+    }
+    private void registerAccont(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         String tk = req.getParameter("username");
         String mk = req.getParameter("password");
         String mkRe = req.getParameter("repassword");
@@ -76,5 +68,19 @@ public class RegisterServletController extends HttpServlet{
         }
         //Trả về thông báo
         doGet(req, resp);
+    }
+    private void showRegisterDisplay(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+        HttpSession session = req.getSession();
+        if(session.getAttribute("cart") == null){
+            Cart giohang = new Cart();
+            session.setAttribute("cartCount", giohang.getCountItem());
+            session.setAttribute("cart", giohang);
+        }
+        if (session.getAttribute("username") == null || session.getAttribute("username").toString().equals("") ) {
+            RequestDispatcher requestDispatcher = req.getRequestDispatcher("/WEB-INF/views/registerView.jsp");
+            requestDispatcher.forward(req, resp);
+            return;
+        } 
+        resp.sendRedirect("home");
     }
 }

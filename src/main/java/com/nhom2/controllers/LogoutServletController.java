@@ -12,6 +12,14 @@ import jakarta.servlet.http.HttpSession;
 public class LogoutServletController extends HttpServlet{
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+        doLogout(req, resp);
+    }
+    @Override
+    protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+        // TODO Auto-generated method stub
+        super.doPost(req, resp);
+    }
+    private void doLogout(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         HttpSession session = req.getSession();
         session.removeAttribute("username");
         session.removeAttribute("ID");
@@ -20,10 +28,5 @@ public class LogoutServletController extends HttpServlet{
         session.removeAttribute("cartCount");
         session.removeAttribute("cart");
         resp.sendRedirect("home");
-    }
-    @Override
-    protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        // TODO Auto-generated method stub
-        super.doPost(req, resp);
     }
 }

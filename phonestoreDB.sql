@@ -68,8 +68,6 @@ FOREIGN KEY (MAHD) REFERENCES hoadon(MAHD),
 FOREIGN KEY (MASP) REFERENCES sanpham(MASP)
 );
 
-select * from product;
-
 -- giá trị account
 -- admins
 insert into account values(null,'king','khoivo','khoivo050603it@gmail.com',"2017-06-15 09:34:21",'khoi',1);
@@ -78,8 +76,14 @@ insert into account values(null,'kuro','khoivo','khoivo050603it@gmail.com',"2017
 
 
 -- giá trị hãng
-insert into hang values(1,'IPhone');
+insert into hang values(1,'iPhone');
 insert into hang values(2,'SAMSUNG');
+insert into hang values(3,'XIAOMI');
+insert into hang values(4,'VIVO');
+insert into hang values(5,'realme');
+insert into hang values(6,'Nokia');
+insert into hang values(7,'itel');
+insert into hang values(8,'modell');
 
 -- giá trị loại
 insert into loai values(1,'Điện Thoại Cảm Ứng');
