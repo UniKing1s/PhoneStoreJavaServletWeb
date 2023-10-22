@@ -7,7 +7,6 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
-import com.nhom2.models.Product;
 import com.nhom2.models.Hang;
 import com.nhom2.models.Loai;
 

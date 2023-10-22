@@ -95,3 +95,16 @@ insert into hoadon values(null,2,'32/6/13','0901672781',null);
 insert into cthoadon values(1,1,1,330000000,330000000);
 
 
+create table CardItem
+(
+ID int not null,
+MASP int not null,
+SLITEM int not null,
+primary key (ID,MASP),
+FOREIGN KEY (ID) REFERENCES account(ID),
+FOREIGN KEY (MASP) REFERENCES sanpham(MASP)
+);
+-- tong tien = Giá sản phẩm *(1-(giamgia/100)) * số lượng(item.soluong)
+-- giasp và giam gia lấy từ product bằng DBCrudProduct.GetProductByID(ID = MASP)
+
+

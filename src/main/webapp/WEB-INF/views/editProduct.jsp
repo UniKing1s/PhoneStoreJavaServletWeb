@@ -1,5 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" isELIgnored="false" %>
 <%@ taglib uri="jakarta.tags.core" prefix="c" %>
+<%--format number--%>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
+<%@ page import="java.text.DecimalFormat" %>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -30,25 +33,34 @@
       <jsp:param name="user" value="${sessionScope.user}" />
     </jsp:include>
     
-
-
     <!--Main layout-->
     <main class="mt-5 pt-4">
         <div class="container">
             <!-- Heading -->
-            <h2 class="my-5 text-center">Thêm Sản Phẩm</h2>
+            <h2 class="my-5 text-center">Sửa Sản Phẩm</h2>
             <!--Grid row-->
             <div class="row">
                 <!--Grid column-->
                 <!--Card-->
-                <form action="#" method="post">
+                <form action="" method="post">
                     <div class="card p-4">
                         <!--Grid row-->
                         <div class="input-group mb-4">
                             <!--Grid column-->
                             <!--Tên Sản phẩm-->
                             <div class="form-outline">
-                                <input type="text" id="typeText" name="tensp" class="form-control" required />
+                                <input type="text" id="typeText" name="id" class="form-control"  value="${p.masp}" readonly />
+                                <label class="form-label" for="typeText">Mã sản phẩm</label>
+                            </div>
+    
+                            <!--Grid column-->
+                            <!--Grid column-->
+                        </div>
+                        <div class="input-group mb-4">
+                            <!--Grid column-->
+                            <!--Tên Sản phẩm-->
+                            <div class="form-outline">
+                                <input type="text" id="typeText" name="tensp" class="form-control"  value="${p.tensp}" required />
                                 <label class="form-label" for="typeText">Tên Sản Phẩm</label>
                             </div>
     
@@ -60,7 +72,7 @@
                         <!--Số lượng-->
                         <div class="input-group mb-4">
                             <div class="form-outline">
-                                <input type="number" id="typeText" name="sl" class="form-control" required />
+                                <input type="number" id="typeText" name="sl" class="form-control" value="${p.sl}" required />
                                 <label class="form-label" for="typeText">Số lượng</label>
                             </div>
                         </div>
@@ -69,7 +81,16 @@
     
                         <div class="input-group mb-4">
                             <div class="form-outline">
-                                <input type="number" id="typeText" name="giasp" class="form-control" required />
+                                <c:set var="gia" value="${p.giasp.toString()}" />
+                                <%
+                                    double number = 0.0;
+                                    if (pageContext.getAttribute("gia") != null) {
+                                        number = Double.parseDouble(pageContext.getAttribute("gia").toString());
+                                      }
+                                    DecimalFormat decimalFormat = new DecimalFormat("#");
+                                    String formattedNumber = decimalFormat.format(number);
+                                %>
+                                <input type="number" id="typeText" name="giasp" class="form-control" required value="<%=formattedNumber%>" />
                                 <label class="form-label" for="typeText">Đơn giá (đ)</label>
                             </div>
                         </div>
@@ -77,21 +98,29 @@
                         <!--Giảm Giá-->
                         <div class="input-group mb-4">
                             <div class="form-outline">
-                                <input type="number" id="typeText" name="giamgia" class="form-control" required/>
+                                <c:set var="giam" value="${p.giamgia.toString()}" />
+                                <%
+                                    double giamgia = 0.0;
+                                    if (pageContext.getAttribute("giam") != null) {
+                                        giamgia = Double.parseDouble(pageContext.getAttribute("giam").toString());
+                                      }
+                                    formattedNumber = decimalFormat.format(giamgia);
+                                %>
+                                <input type="number" id="typeText" name="giamgia" class="form-control" value="<%=formattedNumber%>" required/>
                                 <label class="form-label" for="typeText">Giảm giá (%)</label>
                             </div>
                         </div>
                         <!--Tag-->
                         <div class="input-group mb-4">
                             <div class="form-outline">
-                                <input type="text" id="typeText" name="tag" class="form-control" required/>
+                                <input type="text" id="typeText" name="tag" class="form-control" value="${p.tag}" required/>
                                 <label class="form-label" for="typeText">Tag (Best Seller)</label>
                             </div>
                         </div>
                         <!--Mô tả-->
                         <div class="input-group mb-4">
                             <div class="form-outline">
-                                <input type="text" id="typeText" name="mota" class="form-control" required/>
+                                <input type="text" id="typeText" name="mota" class="form-control" value="${p.mota}" required/>
                                 <label class="form-label" for="typeText">Mô tả</label>
                             </div>
                         </div>
@@ -99,9 +128,16 @@
                         <div class="input-group mb-4">
                             <label for="cars" style="padding-right: 10px;">Mã hãng:</label>
                             <select id="cars" name="mahang" required>
-                                <c:if test="${not empty loais}">
+                                <c:if test="${not empty hangs}">
                                     <c:forEach var="hang" items="${hangs}">
-                                        <option value="${hang.maHang}">${hang.tenHang}</option>
+                                        <c:choose>
+                                            <c:when test="${hang.maHang == p.mahang}">
+                                                <option value="${hang.maHang}" selected>${hang.tenHang}</option>
+                                            </c:when>
+                                            <c:otherwise>
+                                                <option value="${hang.maHang}">${hang.tenHang}</option>
+                                            </c:otherwise>
+                                        </c:choose>
                                     </c:forEach>
                                 </c:if>
                             </select>
@@ -112,7 +148,15 @@
                             <select id="cars" name="maloai" required>
                                 <c:if test="${not empty loais}">
                                     <c:forEach var="loai" items="${loais}">
-                                        <option value="${loai.maloai}">${loai.tenloai}</option>
+                                        <c:choose>
+                                            <c:when test="${loai.maloai == p.maloai}">
+                                                <option value="${loai.maloai}" selected>${loai.tenloai}</option>
+                                            </c:when>
+                                            <c:otherwise>
+                                                <option value="${loai.maloai}">${loai.tenloai}</option>
+                                            </c:otherwise>
+                                        </c:choose>
+                                        
                                     </c:forEach>
                                 </c:if>
                             </select>
@@ -120,7 +164,7 @@
                         <!--Img text-->
                         <div class="input-group mb-4">
                             <div class="form-outline">
-                                <input type="text" id="typeText" name="imgUrl" class="form-control" required />
+                                <input type="text" id="typeText" name="imgUrl" class="form-control" value="${p.imgURL}" required />
                                 <label class="form-label" for="typeText">Image URL (372 x 461)</label>
                             </div>
                         </div>
@@ -135,7 +179,7 @@
                             <div class="col-md-6 mb-2">
                                 <!--firstName-->
                                 <button class="btn btn-primary" style="width: 100%; max-width: 672 px; text-align: center;"
-                                    type="submit">Thêm</button>
+                                    type="submit">Sửa</button>
                             </div>
                             <div class="col-md-6 mb-2">
                                 <!--firstName-->

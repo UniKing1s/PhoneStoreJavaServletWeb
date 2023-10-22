@@ -1,4 +1,4 @@
-package com.nhom2.controllers;
+package com.nhom2.controllers.product;
 
 import java.io.IOException;
 import java.sql.Connection;
@@ -17,18 +17,24 @@ import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
+import jakarta.servlet.http.HttpSession;
 @WebServlet("/addproduct")
 public class CreateProductServletController extends HttpServlet{
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        Connection conn = MySQLConnection.getMySQLConnection();
-        List<Loai> loais = DBCrudCategory.GetListLoai(conn);
-        List<Hang> hangs = DBCrudCategory.GetListHang(conn);
-        MySQLConnection.closeConnection(conn);
-        req.setAttribute("loais", loais);
-        req.setAttribute("hangs", hangs);
-        RequestDispatcher requestDispatcher = req.getRequestDispatcher("/WEB-INF/views/addproduct.jsp");
-        requestDispatcher.forward(req, resp);
+        HttpSession session = req.getSession();
+        if (session.getAttribute("role") != null && session.getAttribute("role").toString().equals("true") ) {
+            Connection conn = MySQLConnection.getMySQLConnection();
+            List<Loai> loais = DBCrudCategory.GetListLoai(conn);
+            List<Hang> hangs = DBCrudCategory.GetListHang(conn);
+            MySQLConnection.closeConnection(conn);
+            req.setAttribute("loais", loais);
+            req.setAttribute("hangs", hangs);
+            RequestDispatcher requestDispatcher = req.getRequestDispatcher("/WEB-INF/views/addproduct.jsp");
+            requestDispatcher.forward(req, resp);
+            return;
+        }    
+        resp.sendRedirect("home");  
     }
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
@@ -48,6 +54,6 @@ public class CreateProductServletController extends HttpServlet{
         Product product = new Product(0, tensp, sl, giasp, giamgia, tag, mota, mahang, maloai, imgURL, idNguoiThem);
         DBCrudProduct.addProduct(conn, product);
         MySQLConnection.closeConnection(conn);
-        resp.sendRedirect("home");
+        resp.sendRedirect("managerProduct");
     }
 }

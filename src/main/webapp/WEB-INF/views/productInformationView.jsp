@@ -29,6 +29,8 @@
     <jsp:include page = "header.jsp">
       <jsp:param name="username" value="${sessionScope.username}" />
       <jsp:param name="role" value="${sessionScope.role}" />
+      <jsp:param name="cartCount" value="${sessionScope.cartCount}" />
+      <jsp:param name="user" value="${sessionScope.user}" />
     </jsp:include>
     <!--Main layout-->
 <main class="mt-5 pt-4">
@@ -100,10 +102,13 @@
 
                   <p>${product.mota}</p>
 
-                  <form class="d-flex justify-content-left">
+                  <form class="d-flex justify-content-left" action="" method="post">
                       <!-- Default input -->
+                      <div class="form-outline me-1" style="width: 100px;" hidden>
+                        <input type="number" name="id" value="${product.masp}" class="form-control" hidden readonly/>
+                      </div>
                       <div class="form-outline me-1" style="width: 100px;">
-                          <input type="number" value="1" class="form-control" />
+                        <input type="number" name="soluong" value="1" min="0" class="form-control" />
                       </div>
                       <button class="btn btn-primary ms-1" type="submit">
                           Thêm vào giỏ hàng

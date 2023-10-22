@@ -23,9 +23,11 @@
 
 <body>
     <!--header-->
-    <jsp:include page="header.jsp">
-        <jsp:param name="username" value="${sessionScope.username}" />
-        <jsp:param name="role" value="${sessionScope.role}" />
+    <jsp:include page = "header.jsp">
+      <jsp:param name="username" value="${sessionScope.username}" />
+      <jsp:param name="role" value="${sessionScope.role}" />
+      <jsp:param name="cartCount" value="${sessionScope.cartCount}" />
+      <jsp:param name="user" value="${sessionScope.user}" />
     </jsp:include>
     
 
@@ -75,21 +77,21 @@
                         <!--Giảm Giá-->
                         <div class="input-group mb-4">
                             <div class="form-outline">
-                                <input type="number" id="typeText" name="giamgia" class="form-control" required />
+                                <input type="number" id="typeText" name="giamgia" class="form-control" required/>
                                 <label class="form-label" for="typeText">Giảm giá (%)</label>
                             </div>
                         </div>
                         <!--Tag-->
                         <div class="input-group mb-4">
                             <div class="form-outline">
-                                <input type="text" id="typeText" name="tag" class="form-control" required />
+                                <input type="text" id="typeText" name="tag" class="form-control" required/>
                                 <label class="form-label" for="typeText">Tag (Best Seller)</label>
                             </div>
                         </div>
                         <!--Mô tả-->
                         <div class="input-group mb-4">
                             <div class="form-outline">
-                                <input type="text" id="typeText" name="mota" class="form-control" required />
+                                <input type="text" id="typeText" name="mota" class="form-control" required/>
                                 <label class="form-label" for="typeText">Mô tả</label>
                             </div>
                         </div>
@@ -137,7 +139,7 @@
                             </div>
                             <div class="col-md-6 mb-2">
                                 <!--firstName-->
-                                <a href="managerproduct" class="btn btn-primary"
+                                <a href="managerProduct" class="btn btn-primary"
                                     style=" background-color: #3b71ca ; text-align: center;width: 100%; max-width: 672 px;"
                                     target="_blank">
                                     <font style="color: white;"><b>Hủy</b></font>

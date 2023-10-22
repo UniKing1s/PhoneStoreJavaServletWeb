@@ -11,6 +11,7 @@ public class Loai {
         this.maloai = maloai;
         this.tenloai = tenloai;
     }
+
     public int getMaloai() {
         return maloai;
     }
@@ -23,7 +24,7 @@ public class Loai {
     public void setTenloai(String tenloai) {
         this.tenloai = tenloai;
     }
-
+    
     
     
     

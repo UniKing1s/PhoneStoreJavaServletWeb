@@ -22,6 +22,8 @@
     <jsp:include page = "header.jsp">
       <jsp:param name="username" value="${sessionScope.username}" />
       <jsp:param name="role" value="${sessionScope.role}" />
+      <jsp:param name="cartCount" value="${sessionScope.cartCount}" />
+      <jsp:param name="user" value="${sessionScope.user}" />
     </jsp:include>
 
 

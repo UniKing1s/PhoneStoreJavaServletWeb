@@ -38,7 +38,7 @@
           <c:set var="role" value="${param.role}" />
           <c:if test="${role eq true}">
             <li class="nav-item">
-              <a class="nav-link" href="managerProduct">Dash board</a>
+              <a class="nav-link" href="managerProduct">Quản lý sản phẩm</a>
             </li>
           </c:if>        
         </ul>
@@ -49,9 +49,11 @@
       <!-- Right elements -->
       <div class="d-flex align-items-center">
         <!-- Icon -->
-        <a class="nav-link me-3" href="#">
+        <a class="nav-link me-3" href="cart">
           <i class="fas fa-shopping-cart"></i>
-          <span class="badge rounded-pill badge-notification bg-danger">1</span>
+          <span class="badge rounded-pill badge-notification bg-danger">
+          ${param.cartCount}
+          </span>
         </a>
   
         <a class="nav-link me-3" href="https://www.facebook.com/profile.php?id=100007709749110">
@@ -61,6 +63,9 @@
         <c:set var="username" value="${param.username}" />
         <c:choose>
           <c:when test="${not empty username}">
+
+              <c:set var="user" value="${param.user}" />
+              <a class="border rounded px-2 nav-link" href="">${user}</a>
               <a href="logout" class="border rounded px-2 nav-link" target="_blank">Đăng xuất</a>
           </c:when>
           <c:otherwise>

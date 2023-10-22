@@ -1,13 +1,8 @@
-package com.nhom2.controllers;
+package com.nhom2.controllers.cartController;
 
 import java.io.IOException;
-import java.sql.Connection;
-import java.util.List;
 
 import com.nhom2.models.Cart;
-import com.nhom2.models.MySQLConnection;
-import com.nhom2.models.Product;
-import com.nhom2.models.modelsCURD.DBCrudProduct;
 
 import jakarta.servlet.RequestDispatcher;
 import jakarta.servlet.ServletException;
@@ -16,29 +11,23 @@ import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import jakarta.servlet.http.HttpSession;
-@WebServlet("/home")
-public class homePageServletController extends HttpServlet{
+@WebServlet("/cart")
+public class CartServletController extends HttpServlet{
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        //Giỏ hàng
         HttpSession session = req.getSession();
-        //Giỏ hàng chưa có => tạo mới
         if(session.getAttribute("cart") == null){
             Cart giohang = new Cart();
             session.setAttribute("cartCount", giohang.getCountItem());
             session.setAttribute("cart", giohang);
+            session.setAttribute("cardTotal", giohang.getSumtotal());
+        }else{
+            Cart cart = (Cart) session.getAttribute("cart");
+            cart.setSumtotal();
+            session.setAttribute("cardTotal", cart.getSumtotal());
         }
-        //List<Product> prod = new ArrayList<>();
-        //lấy connection
-        Connection conn = MySQLConnection.getMySQLConnection();
-        System.out.println(conn);
-        //thực hiện lấy dữ liệu;
-        List<Product> prod = DBCrudProduct.getListOfProduct(conn);
-        //đóng kết nối
-        MySQLConnection.closeConnection(conn);
-        //Load dữ liệu lên req
-        req.setAttribute("list", prod);
-        RequestDispatcher requestDispatcher = req.getRequestDispatcher("/WEB-INF/views/homePageViews.jsp");
+        
+        RequestDispatcher requestDispatcher = req.getRequestDispatcher("/WEB-INF/views/cartView.jsp");
         requestDispatcher.forward(req, resp);
     }
     @Override

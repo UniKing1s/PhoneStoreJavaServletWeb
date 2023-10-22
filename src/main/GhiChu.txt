@@ -9,4 +9,25 @@ Cart : giỏ hàng
 <Khoi> 17/10/2023
 modelsCRUD
     - DBCrudProduct: Thêm sửa xóa lấy danh sách tìm theo id
+    20/10/2023
+    - DBAccount: Thêm account check account
+    - DBCategory: Lấy danh sách loại và danh sách hãng
+    - Đăng nhập - Đăng ký - Chia role - Ẩn hiện theo role - session đăng nhập - Logout thông tin trả về như session cũ
+    - ListProduct Page - Thêm sản phẩm Page hoàn thành
+    - Các page không có quyền hoặc chưa đăng nhập đều bị đưa về trang chủ
+    21/10/2023
+    - check role cho quản lý sản phẩm
+    - Thêm sản phẩm cần đầy đủ thông tin(check sau)
+    - Thêm sửa xóa sản phẩm xong(đã phân quyền)
+    - Giỏ hàng ko đăng nhập và đăng nhập
+    - Vẫn thêm dc sản phẩm vào giỏ khi ko đăng nhập và khi đăng nhập vật phẩm trong giỏ hàng sẽ tự cập nhật vào csdl 
+    nếu sản phẩm chưa có thì thêm vào có rồi thì tăng số lượng
+    - Crud Cart
+    22/10/2023
 </Khoi>
+
+
+HttpSession session = req.getSession();
+session.setAttribute("ID",account.id);
+
+session.setAttribute("ID");

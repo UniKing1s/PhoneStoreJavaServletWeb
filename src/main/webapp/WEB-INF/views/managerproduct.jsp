@@ -28,9 +28,11 @@
 
 <body>
     <!--header-->
-    <jsp:include page="header.jsp">
-        <jsp:param name="username" value="${sessionScope.username}" />
-        <jsp:param name="role" value="${sessionScope.role}" />
+    <jsp:include page = "header.jsp">
+      <jsp:param name="username" value="${sessionScope.username}" />
+      <jsp:param name="role" value="${sessionScope.role}" />
+      <jsp:param name="cartCount" value="${sessionScope.cartCount}" />
+      <jsp:param name="user" value="${sessionScope.user}" />
     </jsp:include>
     <!--Main layout-->
     <main class="mt-5 pt-4">
@@ -86,12 +88,12 @@
                                         <td>${p.mota}</td>
                                         <td>${p.mahang}</td>
                                         <td>${p.maloai}</td>
-                                        <td><a href="${p.imgURL}" style="color: black;">${p.imgURL}</a></td>
+                                        <td><img src="${p.imgURL}" style="width: 75px;height: 100px;"></td>
                                         <td>${p.idNguoiThem}</td>
-                                        <td><a href="edit?id=${p.masp}" style="color: black;font-weight: bold; background-color: aqua;">Edit</a>
+                                        <td><a href="edit?id=${p.masp}" class="btn btn-primary" style="color: white;font-weight: bold;">Edit</a>
                                         </td>
-                                        <td><a href="delete?id=${p.masp}"
-                                                style="color: white;font-weight: bold; background-color: darkred;">Delete</a>
+                                        <td><a href="delete?id=${p.masp}" class="btn btn-primary"
+                                                style="color: white;font-weight: bold;">Delete</a>
                                         </td>
                                     </tr>
                                     

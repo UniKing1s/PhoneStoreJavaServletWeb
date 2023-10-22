@@ -7,7 +7,6 @@ import java.sql.SQLException;
 import java.util.Date;
 
 import com.nhom2.models.Account;
-import com.nhom2.models.Product;
 
 public class DBCrudAccount {
     public static void addAccount(Connection conn, Account acc){

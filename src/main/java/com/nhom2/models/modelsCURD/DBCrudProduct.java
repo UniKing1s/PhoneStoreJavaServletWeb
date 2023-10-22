@@ -80,7 +80,7 @@ public class DBCrudProduct {
                 int maloai = rs.getInt("MALOAI");
                 String imgUrl = rs.getString("IMGURL");
                 int idpap = rs.getInt("IDPAP");
-                prod = new Product(id, nameProduct, sl, dongia, giamgia, tag, mota, mahang, maloai, imgUrl, idpap);
+                prod = new Product(idPro, nameProduct, sl, dongia, giamgia, tag, mota, mahang, maloai, imgUrl, idpap);
             }
         } catch (SQLException e) {
             e.printStackTrace();
