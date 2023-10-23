@@ -1,4 +1,4 @@
-CREATE DATABASE phonestore;
+CREATE DATABASE `phonestore` /*!40100 DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci */ /*!80016 DEFAULT ENCRYPTION='N' */;
 USE phonestore;
 
 create table account
@@ -81,6 +81,7 @@ insert into hang values(2,'SAMSUNG');
 insert into hang values(3,'XIAOMI');
 insert into hang values(4,'VIVO');
 insert into hang values(5,'realme');
+
 insert into hang values(6,'Nokia');
 insert into hang values(7,'itel');
 insert into hang values(8,'modell');

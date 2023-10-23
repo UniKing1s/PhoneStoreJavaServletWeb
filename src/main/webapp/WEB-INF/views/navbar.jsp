@@ -30,7 +30,7 @@
         </li>
         <c:forEach var="nav" items="${param.navItem}">
           <li class="nav-item">
-            <a class="nav-link text-white" href="home?search=Iphone">${nav}</a>
+            <a class="nav-link text-white" href="" onclick="">${nav}</a>
           </li>
         </c:forEach>
       </ul>

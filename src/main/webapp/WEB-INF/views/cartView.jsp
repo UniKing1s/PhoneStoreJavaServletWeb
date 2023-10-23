@@ -120,8 +120,16 @@
                             </div>
                         <br>
                         <br>
-                        <button class="btn btn-primary" type="button" style="text-align: center;">Thanh Toán
-                        </button>  
+                        <button class="btn btn-primary" id="makePayMent" type="button" style="text-align: center;">Thanh Toán
+                        </button>
+                        <script>
+                            var button = document.getElementById("makePayMent");
+                            // Đăng ký sự kiện onclick cho nút
+                            button.onclick = function() {
+                              // Chuyển hướng đến trang khác
+                              window.location.href = "makePayment"; // Thay đổi URL thành URL mong muốn
+                            };
+                          </script>  
                     </c:if>              
             </div>
             <!--/.Card-->

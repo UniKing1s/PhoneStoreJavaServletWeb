@@ -1,7 +1,6 @@
 package com.nhom2.controllers;
 
 import java.io.IOException;
-import java.io.PrintWriter;
 import java.sql.Connection;
 import java.util.List;
 
@@ -34,7 +33,6 @@ public class SearchProductByNameServletController extends HttpServlet{
         Connection conn = MySQLConnection.getMySQLConnection();
         List<Product> list = DBCrudProduct.getListOfProductByName(conn, txt);
         MySQLConnection.closeConnection(conn);
-        PrintWriter out = resp.getWriter();
         req.setAttribute("list", list);
         RequestDispatcher requestDispatcher = req.getRequestDispatcher("/WEB-INF/views/searchData.jsp");
         requestDispatcher.forward(req, resp);

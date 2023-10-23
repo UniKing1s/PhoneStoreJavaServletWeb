@@ -24,7 +24,7 @@
         <a class="navbar-brand mt-2 mt-sm-0" href="home">
           <img
             src="img/Nhom-2-Phone.png"
-            height="20"
+            height="50"
             alt="MDB Logo"
             loading="lazy"
           />
@@ -114,7 +114,7 @@
     </div>
     <div class="carousel-inner">
       <div class="carousel-item active">
-        <img src="img/space.gif" class="d-block w-100" alt="Wild Landscape"/>
+        <img src="img/200w.gif" class="d-block w-100" alt="Wild Landscape"/>
         <div class="mask" style="background-color: rgba(0, 0, 0, 0.4)"></div>
         
       </div>

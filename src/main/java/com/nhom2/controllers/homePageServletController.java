@@ -7,7 +7,6 @@ import java.util.List;
 
 import com.nhom2.models.Cart;
 import com.nhom2.models.Hang;
-import com.nhom2.models.Loai;
 import com.nhom2.models.MySQLConnection;
 import com.nhom2.models.Product;
 import com.nhom2.models.modelsCURD.DBCrudCategory;
